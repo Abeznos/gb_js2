@@ -38,25 +38,62 @@
             height: 100vh;
             z-index: 100;
             background-color: rgba(0, 0, 0, .75);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
             display: none;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            
         }
         
         .modal.active {
             display: flex;
         }
+        
+        .arrow__list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50px;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .left__arrow,
+        .right__arrow {
+            font-size: 40px;
+            color: black;
+            padding: 20px;
+            display: block;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .left__arrow:before {
+            content: '\2329';
+        }
+
+        .right__arrow:before {
+            content: '\232A';
+        }        
     </style>
 </head>
 <body>
    <div class="container">
        <div class="gallery"></div>
-       <div class="modal"></div>
+       <div class="modal">
+           <div class="image-container"></div>
+           <div class="arrow__list">
+               <div class="left__arrow"></div>
+               <div class="right__arrow"></div>
+           </div>
+       </div>
    </div>
    <script src="GalleryItem.js"></script>
     <script>
@@ -91,18 +128,27 @@
                 return;
             }
             
-            const currentImage = new OpenedImage(event.target.dataset.full_image_url);
+            const currentImage = new OpenedImage(
+                event.target.dataset.full_image_url, event.target.nextElementSibling.dataset.full_image_url
+            );
             
-            modal.innerHTML = currentImage.openImage();
+            modal.querySelector('.image-container').innerHTML = currentImage.openImage(this.src);
             modal.classList.add('active');
             
+            modal.querySelector('.right__arrow').addEventListener('click', () => {
+                
+                modal.querySelector('.image-container').innerHTML = currentImage.openImage(this.currentImage);
+            });
         });
         
-        modal.addEventListener('click', event => {
-            if (event.target.tagName !== 'IMG') {
-                modal.classList.remove('active');
-            }
-        });
+        //modal.addEventListener('click', event => {
+        //    if (event.target.tagName !== 'IMG') {
+        //        modal.classList.remove('active');
+        //    }
+        //
+        //    
+        //});
+        
         
 
         

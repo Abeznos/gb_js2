@@ -7,16 +7,18 @@ class GalleryItem {
 }
 
 class OpenedImage {
-    constructor(src, prevImg, nextImg) {
+    constructor(src, currentImage) {
         this.src = src;
+        this.currentImage = currentImage;
 
     }
-    openImage() {
+    openImage(src) {
         const imageOpen = new Image();
-        imageOpen.src = this.src;
+        imageOpen.src = src;
         
         const result = `<img src="${this.src}">`;
-    
+        
+        console.log(this.currentImage);
         return result;
     }
     

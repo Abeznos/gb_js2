@@ -2,11 +2,11 @@
 
 class Form {
     constructor(id) {
-        this.id = id;
         this._validateNameInput();
         this._validatePhoneInput();
         this._validateEmailInput();
         this._validateTextareInput();
+        this.id = document.getElementById(id);
     }
     
     _validateNameInput() {
@@ -47,6 +47,5 @@ class Form {
         const textareaInput = document.getElementById('exampleTextareaInput');
 
     }
-    
     
 } 

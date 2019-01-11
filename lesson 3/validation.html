@@ -9,18 +9,23 @@
     <div class="container">
         <form action="#" method="post" id="myForm">
             <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
+                <label for="exampleInputName">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" placeholder="Enter your name">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>            
+            <div class="form-group">
+                <label for="exampleInputSurname">Surname</label>
+                <input type="text" class="form-control" id="exampleInputSurname" placeholder="Enter your surname">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Phone</label>
-                <input type="text" class="form-control" id="exampleInputPhone" placeholder="Your phone number">
+                <label for="exampleInputPhone">Phone</label>
+                <input type="tel" class="form-control" id="exampleInputPhone" placeholder="Your phone number">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>                
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
+                <label for="exampleInputEmail">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter your email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
@@ -30,7 +35,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <script src="form.js"></script>
+    <script src="Form2.js"></script>
     <script>
         window.onload = () => {
             
@@ -38,7 +43,7 @@
             document.getElementById('myForm')
                 .addEventListener('submit', e => {
                 e.preventDefault();
-                const form = new Form(myForm);
+                const form = new Form('myForm');
             })
         }
     </script>
