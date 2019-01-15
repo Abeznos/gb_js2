@@ -36,11 +36,15 @@ class Form {
     }
     
     isValidForm() {
-        if (![...document.getElementById(this.form).querySelectorAll('.is-invalid')].length) {
-            console.log('aada');
-            this.valid = true;
-        } else {
+        if (![...document.getElementById(this.form).querySelectorAll('.is-invalid')].length && 
+           ![...document.getElementById(this.form).querySelectorAll('.is-valid')].length) {
+            console.log('ни тех ни тех');
             return false;
+        } else if ([...document.getElementById(this.form).querySelectorAll('.is-invalid')].length) {
+            console.log('красные поля');
+            return false;
+        } else {
+            return true;
         }
         
     }
