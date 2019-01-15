@@ -6,8 +6,10 @@ class Form {
         this.textRegExp = /^[a-zа-яА-яёЁ]{4,30}$/i;
         this.phoneRegExp = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/gmi;
         this.emailRegExp = /^[a-z?\-?\.]+@[a-z?\-?\.]+\.[a-z]{2,3}/gmi;
-    
+        this.valid = false;
+        
         this._formInputsInit(this.block);
+        
     }
     
     _formInputsInit(id){
@@ -26,8 +28,11 @@ class Form {
          if (regExp.test(input.value)) {
              input.classList.add('is-valid');
              input.classList.remove('is-invalid');
+             this.valid = true;
          } else {
              input.classList.add('is-invalid');
+             this.valid = false;
          }
     }
+    
 }
