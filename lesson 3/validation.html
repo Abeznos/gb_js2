@@ -35,16 +35,23 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <script src="Form2.js"></script>
+    <script src="Form3.js"></script>
     <script>
         window.onload = () => {
             
-            
+            const myForm = new Form('myForm');
+            //myForm.isValidForm();
             document.getElementById('myForm')
                 .addEventListener('submit', e => {
-                e.preventDefault();
-                const form = new Form('myForm');
+                
+                if (!myForm.isValidForm()) {
+                    e.preventDefault();
+                    console.log(myForm.valid);
+                }
             })
+            
+            
+        
         }
     </script>
 </body>
