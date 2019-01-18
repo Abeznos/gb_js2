@@ -33,7 +33,7 @@ class Product {
             text: 'Купить',
             'data-id': this.id,
             'data-price': this.price,
-            'data-name': this.name
+            'data-name': this.title
         })
         
         //Создание структуры

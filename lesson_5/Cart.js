@@ -78,7 +78,7 @@ class Cart {
     
     
     _updateCart(product) {
-        const $conatiner = $(`div[data-product="${product.id_product}"]`);
+        let $conatiner = $(`div[data-product="${product.id_product}"]`);
         
         $conatiner.find('.product-quantity').text(product.quantity);
         $conatiner.find('.product-price').text(`${product.quantity * product.price} руб.`);
@@ -105,6 +105,7 @@ class Cart {
             this._renderItem(product);
             this.amount += product.price;
             this.countGoods += product.quantity;
+            console.log(this.cartItems);
         };
         
         this._renderSum();
@@ -112,22 +113,32 @@ class Cart {
     
     _removeProduct(element) {
         const productId = +$(element).data('id');
-        //
+        
         const find = this.cartItems.find(product => product.id_product === productId);
         
-        if (find) {
-            if (find.quantity !== 0) {
-                find.quantity--;
-                this.countGoods--;
-                this.amount -= find.price;
-                this._updateCart(find);
-            } else {
-                return;
-            }
-        };
-
+        if (find.quantity !== 0) {            
+            find.quantity--;
+            this.countGoods--;
+            this.amount -= find.price;
+            this._updateCart(find);        
+        } 
+        
+        if (find.quantity === 0) {
+            
+            $.each($('.cart-item'), (index, data) => {
+                if ($(data).data('product') === find.id_product) {
+                    $('.cart-item')[index].remove();
+                }
+            });
+            
+            this.cartItems.unshift(...this.cartItems.splice(1, this.cartItems.indexOf(find)));
+            this.cartItems.shift();
+        }
         this._renderSum();
-        //this._render();
+    }
+    
+    _updateCartfaterDelete(product) {
+        console.log('a')
     }
 
 }
