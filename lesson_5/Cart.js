@@ -66,7 +66,6 @@ class Cart {
         $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
         $container.append($deleteBtn);
-        //$container.append($('<button class="deletBtn"></button>'));
         
         $container.appendTo($('.cart-items-wrap'));
     }
@@ -78,7 +77,7 @@ class Cart {
     
     
     _updateCart(product) {
-        let $conatiner = $(`div[data-product="${product.id_product}"]`);
+        const $conatiner = $(`div[data-product="${product.id_product}"]`);
         
         $conatiner.find('.product-quantity').text(product.quantity);
         $conatiner.find('.product-price').text(`${product.quantity * product.price} руб.`);
