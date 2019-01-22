@@ -80,9 +80,11 @@ class Form {
             if (this.regExp.hasOwnProperty(field.type)) {
                 if (this.regExp[field.type].test(field.value)) { 
                     field.classList.add('is-valid');
-                    field.classList.remove('is-invalid'); 
+                    field.classList.remove('is-invalid')
                 } else {
                     field.classList.add('is-invalid');
+                    $(field).effect('bounce', 'slow');
+                    
                 }
             }
         })
