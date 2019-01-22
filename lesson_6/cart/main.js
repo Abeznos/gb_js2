@@ -12,5 +12,14 @@ $(document).ready(() => {
     
     $('.buyBtn').click(e => {
         cart.addProduct(event.target);
-    });     
+    });
+    
+    $('#cart').droppable({
+        drop: (event, ui) => {
+            //console.log(ui);
+            //console.log($(ui.draggable[0]).data('id'));
+
+            cart.addProduct($(ui.draggable)[0]);
+        }
+    });
 });

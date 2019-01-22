@@ -38,13 +38,10 @@ class Cart {
             class: 'cart-summary sum-price'
         });
         
-        
-        
         $(this.container).text('Корзина');
         $cartItemsDiv.appendTo($(this.container));
         $totalGoods.appendTo($(this.container));
         $totalPrice.appendTo($(this.container)); 
-
     }
     
     _renderItem(product) {
@@ -66,7 +63,6 @@ class Cart {
         $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
         $container.append($(`<p class="product-price">${product.price} руб.</p>`));
         $container.append($deleteBtn);
-        
         $container.appendTo($('.cart-items-wrap'));
     }
     
@@ -104,7 +100,6 @@ class Cart {
             this._renderItem(product);
             this.amount += product.price;
             this.countGoods += product.quantity;
-            console.log(this.cartItems);
         };
         
         this._renderSum();
@@ -130,7 +125,7 @@ class Cart {
                 }
             });
             
-            this.cartItems.unshift(...this.cartItems.splice(1, this.cartItems.indexOf(find)));
+            this.cartItems.unshift(...this.cartItems.splice(this.cartItems.indexOf(find), 1));
             this.cartItems.shift();
         }
         this._renderSum();

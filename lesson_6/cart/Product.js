@@ -11,7 +11,10 @@ class Product {
     
     _render() {
         const $wraper = $('<div/>', {
-            class: 'product'
+            class: 'product border-succes',
+            'data-id': this.id,
+            'data-price': this.price,
+            'data-name': this.title
         });
         
         const $img = $('<img/>', {
@@ -43,5 +46,9 @@ class Product {
         $buyBtn.appendTo($desc);
         $desc.appendTo($wraper);
         $(this.container).append($wraper);
+        
+        $wraper.draggable({
+            revert: true
+        });
     }
 }
