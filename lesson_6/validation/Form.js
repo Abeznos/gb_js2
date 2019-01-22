@@ -12,7 +12,6 @@ class Form {
         
         this._formInputInit(this.form);
         this._getCity();
-        console.log(this.allCitys);
     }
     
     _getCity() {
@@ -35,8 +34,6 @@ class Form {
     }
     
     _autocomplete(field) {
-
-        
         $(field).autocomplete({
             source: this.allCitys
         });
@@ -80,11 +77,12 @@ class Form {
             if (this.regExp.hasOwnProperty(field.type)) {
                 if (this.regExp[field.type].test(field.value)) { 
                     field.classList.add('is-valid');
-                    field.classList.remove('is-invalid')
+                    field.classList.remove('is-invalid');
+                    $(field).next('.form-text').slideUp(800);
                 } else {
                     field.classList.add('is-invalid');
-                    $(field).effect('bounce', 'slow');
-                    
+                    $(field).next('.form-text').slideDown(800);
+                    $(field).effect('shake');
                 }
             }
         })
