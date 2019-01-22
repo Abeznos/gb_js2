@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>My example tabs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            border: 2px solid orange;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .tabs-navigation {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            list-style-type: none;
+        }
+        .tabs-navigation li {
+            padding: 5px 15px;
+            border-right: 2px solid orange;
+            cursor: pointer;
+        }
+        .tabs-navigation li.active {
+            font-weight: 700;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>  
+</head>
+<body class="jumbotron">
+    <div class="jumbotron">
+        <div class="container">
+            <ul class="tabs-navigation">
+               <li class="active" data-chapter="1">Часть I</li>
+               <li data-chapter="2">Часть II</li>
+               <li data-chapter="3">Часть III</li>
+            </ul>
+            <div class="tabs-container">
+                <div class="tab-content active" data-chapter="1">
+                    Гробница Тутанхамона (KV62 англ. Kings' Valley No. 62) — древнеегипетская гробница в Долине Царей, в которой в ходе раскопок Говардом Картером и археологом-любителем лордом Джорджем Карнарвоном в 1922 году была обнаружена мумия фараона Тутанхамона, скончавшегося около 1327 года до н. э.[~ 1] Открытие гробницы стало одним из крупнейших событий в истории египтологии и мировой археологии; гробница одна из немногих, сохранивших наиболее ценные артефакты, несмотря на то, что её дважды грабили расхитители.  
+                </div>
+                <div class="tab-content" data-chapter="2">
+                    Археологические исследования Картера совпали с политическим кризисом в Египте, приведшим к провозглашению независимости страны (1922). В 1924 году спор о продолжении исследований гробницы привёл к временному осложнению британо-египетских отношений; после разрешения конфликта Говард Картер смог вернуться к работе. В гробнице хорошо сохранились многочисленные предметы быта, украшения, артефакты, сопровождавшие фараона в последний путь. Четыре ковчега и три саркофага из драгоценных металлов сохранили мумифицированное тело фараона. Золотая маска, покрывавшая лицо и грудь усопшего фараона, стала одним из символов сокровищ гробницы и Египта. В KV62 сохранились следы переделки, которые свидетельствуют о том, что гробница строилась для другого высокопоставленного лица (возможно, женщины), но в ней спешно похоронили Тутанхамона.
+                </div>
+                <div class="tab-content" data-chapter="3">
+                    Известное лишь специалистам имя Тутанхамона после сенсационного открытия гробницы стало нарицательным для древнеегипетской культуры. Открытие KV62 послужило толчком к изучению своеобразного амарнского периода в истории Нового Царства и дальнейшему распространению «египтомании» во всём мире. Скоропостижная смерть лорда Карнарвона способствовала распространению легенды о «проклятии фараонов». По результатам исследования найденных в гробнице артефактов в 1922—1933 годах были опубликованы трёхтомный труд и каталог.               
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            
+            const $tabNavigaton = $('.tabs-navigation');
+            const $tabContent = $('.tab-content');
+            
+            $tabNavigaton.on('click', 'li', event => {
+                const $currentLi = $(event.target);
+                $currentLi.addClass('active').siblings().removeClass('active');
+                
+                const $chapter = $currentLi.data('chapter');
+
+                $tabContent.each((index, item) => {
+                    if ($(item).data('chapter') === $chapter) {
+                        $(item).slideDown(1000).siblings().slideUp(1000).removeClass('active'); 
+                    }
+                });      
+            });
+        });
+    </script>
+</body>
+</html>

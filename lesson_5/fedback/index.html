@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>fedback</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron m-0">
+        <div class="container">   
+            <div class="card-deck"></div>
+        </div>
+    </div>
+    <div class="jumbotron m-0">
+    <form class="container" Id="fedbackForm" action="#">
+        <fieldset>
+            <legend class="mb-4">Добавить комментарий</legend>
+            <div class="form-group">
+                <label for="exampleInputName">Ваше имя</label>
+                <input type="text" class="form-control" id="exampleInputName"  placeholder="Введите ваше имя">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputCity">Ваш город</label>
+                <input type="text" class="form-control" id="exampleInputCity" placeholder="Введите ваш город">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ваш комментарий</label>
+                <textarea class="form-control" id="exampleComment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="addNewCard">Отправить</button>
+        </fieldset>
+    </form>
+    </div>
+    
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Fedback.js"></script>
+    <script src="Review.js"></script>
+    <script>
+       $(document).ready (() => {
+            const $fedbackContainer = new Fedback('getFedback.json');
+            
+            $('#fedbackForm').on('click', '#addNewCard', e => {
+                e.preventDefault();
+                $fedbackContainer.addNewReview();
+            });
+            
+            
+       });
+    </script>
+    
+</body>
+</html>

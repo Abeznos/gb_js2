@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Validation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
+    <style>
+        #citylHelp {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class=jumbotron>
     <div class="container">
@@ -29,29 +35,30 @@
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
+                <label for="exampleCitys">Example city</label>
+                <input type="text" class="form-control" id='exampleInputCity' value="" autocomplete="off">
+                <div id="citylHelp" class="form-text text-primary"></div>
+            </div>            
+            <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleTextareaInput" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <script src="Form3.js"></script>
+    <script src="Form.js"></script>
     <script>
         window.onload = () => {
             
             const myForm = new Form('myForm');
-            //myForm.isValidForm();
+            
             document.getElementById('myForm')
                 .addEventListener('submit', e => {
                 
                 if (!myForm.isValidForm()) {
                     e.preventDefault();
-                    console.log(myForm.valid);
                 }
-            })
-            
-            
-        
+            });
         }
     </script>
 </body>

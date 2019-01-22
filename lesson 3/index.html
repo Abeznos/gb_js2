@@ -28,7 +28,7 @@
         let paragraph = document.querySelectorAll('p');
         for (let i = 0; i < paragraph.length; i++) {
 
-            let result = paragraph[i].textContent.replace(/\B'\b|'$/g, '"');
+            let result = paragraph[i].textContent.replace(/\B'|'$/g, '"');
             paragraph[i].innerHTML = result;
         }
     </script>
